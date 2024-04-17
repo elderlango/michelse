@@ -5,7 +5,7 @@ const { connectDB } = require('./config/db');
 
 connectDB()
     .then(() => {
-        app.listen(3000, () => {
+        app.listen(3000, '44.226.145.213', () => {
             console.log('La aplicación está escuchando en el puerto 3000');
         });
     })
