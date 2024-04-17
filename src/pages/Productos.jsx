@@ -15,14 +15,17 @@ function LoginForm() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                email: email,
-                password: password,
+              codigo: document.getElementsByName('codigo')[0].value,
+              nombre: document.getElementsByName('nombre')[0].value,
+              descripcion: document.getElementsByName('descripcion')[0].value,
+              fecha_creacion: document.getElementsByName('fecha_creacion')[0].value,
+              estatus: document.getElementsByName('estatus')[0].value,
+              Proveedor: document.getElementsByName('Proveedor')[0].value,
             }),
         });
 
     } catch (error) {
         console.error(error);
-        Alert.alert('Error', 'No se pudo completar la solicitud. Por favor, verifica tu conexión y vuelve a intentarlo.');
     }
 };
   return (

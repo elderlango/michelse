@@ -43,6 +43,9 @@ function HeaderMenu() {
         <Button onClick={() => navigate("/")}>Iniciar sesion</Button>
       </li> 
       <li>
+        <Button variation="swapii" onClick={() => navigate("/Productos")}>Productos</Button>
+      </li> 
+      <li>
         <DarkModeToggle />
       </li>
     </StyledHeaderMenu>
