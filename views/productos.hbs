@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="css/productos.css">
+</head>
+<body>
+
+ 
+
+    <div class="login-box form-container">
+
+           <h1>Productos</h1><br>
+            <h2>Crear</h2>
+            <form action="/crearProducto" method="post">
+                <div class="user-box">
+                    <input  name="codigo" type="text">
+                    <label>Código</label>
+                </div>
+
+                <div class="user-box">
+                    <input  name="nombre" type="text">
+                    <label>Nombre</label>
+                </div>
+
+
+                <div class="user-box">
+                    <input  name="descripcion" type="text">
+                    <label>Descripción</label>
+                </div>
+
+
+                <div class="user-box">
+                    <input  name="fecha_creacion" type="date">
+                    <label>Fecha de Creación</label>
+                </div>
+
+                <div class="user-box">
+                    <input  name="estatus" type="text">
+                    <label>Estatus</label>
+                </div>
+
+                <div class="user-box">
+                    <input  name="Proveedor" type="text">
+                    <label>Proveedor</label>
+                </div>
+
+                <input class="sub" type="submit" value="Crear"><br>
+            </form>
+
+        <h2>Editar</h2>
+            <form action="/editarProducto" method="post">
+                <div class="user-box">
+                    <input  name="codigo" type="text">
+                    <label>Código</label>
+                </div>
+
+                <div class="user-box">
+                    <input  name="nombre" type="text">
+                    <label>Nombre</label>
+                </div>
+
+                <div class="user-box">
+                    <input  name="descripcion" type="text">
+                    <label>Descripción</label>
+                </div>
+
+
+                <div class="user-box">
+                    <input  name="fecha_creacion" type="date">
+                    <label>Fecha de Creación</label>
+                </div>
+
+                <div class="user-box">
+                    <input  name="estatus" type="text">
+                    <label>Estatus</label>
+                </div>
+
+                <div class="user-box">
+                    <input  name="Proveedor" type="text">
+                    <label>Proveedor</label>
+                </div>
+
+                <input class="sub" type="submit" value="Editar"><br>
+            </form>
+
+            <h2>Borrar</h2>
+            <form action="/borrarProducto" method="post">
+               <div class="user-box">
+                    <input  name="codigo" type="text">
+                    <label>Código</label>
+                </div>
+                <input class="sub" type="submit" value="Borrar"><br>
+            </form>
+
+               
+    </div>
+                 <a href="/productosView">Ver Productos</a><br>
+                <a href="/proveedor">Proveedor</a>
+
+</body>
+</html>

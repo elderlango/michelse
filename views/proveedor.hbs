@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="css/proveedor.css">
+</head>
+<body>
+
+    <h1>Proveedor</h1>
+
+    <div class="form-container">
+        <div class="form-column">
+            <h2>Crear</h2>
+            <form action="/crearProveedor" method="post">
+                <input placeholder="Idproveedor" name="Idproveedor" type="text"><br>
+                <input placeholder="Nombre" name="nombre" type="text"><br>
+                <input placeholder="Apellido" name="apellido" type="text"><br>
+                <input placeholder="Empresa" name="empresa" type="date"><br>
+                <input placeholder="Teléfono" name="telefono" type="text"><br>
+                <input placeholder="Correo" name="correo" type="text"><br>
+                <input placeholder="Estatus" name="estatus" type="text"><br>
+                <input class="sub" type="submit" value="Crear"><br>
+            </form>
+        </div>
+        <div class="form-column">
+            <h2>Editar</h2>
+            <form action="/editarProveedor" method="post">
+                <input placeholder="Idproveedor" name="Idproveedor" type="text"><br>
+                <input placeholder="Nombre" name="nombre" type="text"><br>
+                <input placeholder="Apellido" name="apellido" type="text"><br>
+                <input placeholder="Empresa" name="empresa" type="date"><br>
+                <input placeholder="Teléfono" name="telefono" type="text"><br>
+                <input placeholder="Correo" name="correo" type="text"><br>
+                <input placeholder="Estatus" name="estatus" type="text"><br>
+                <input class="sub" type="submit" value="Editar"><br>
+            </form>
+        </div>
+        <div class="form-column">
+            <h2>Borrar</h2>
+            <form action="/borrarProveedor" method="post">
+                <input placeholder="Idproveedor" name="Idproveedor" type="text"><br>
+                <input class="sub" type="submit" value="Borrar"><br>
+            </form>
+        </div>
+    </div> 
+                 <a href="/proveedorView">Ver Proveedor</a><br>
+                <a href="/productos">Productos</a>
+
+</body>
+</html>

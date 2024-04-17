@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="css/productos.css">
+</head>
+<body>
+
+    <h1>Proveedor</h1>
+
+    <div id="proveedores-container"></div> <!-- Container to display the list of proveedores -->
+
+    <script>
+        // Fetch data from the "/proveedoresGet" endpoint
+        fetch("/proveedoresGet")
+            .then(response => response.json())
+            .then(proveedores => {
+                // Create HTML elements to display the proveedores
+                const proveedoresContainer = document.getElementById("proveedores-container");
+                const proveedoresList = document.createElement("ul");
+
+                proveedores.forEach(proveedor => {
+                    const proveedorItem = document.createElement("li");
+                    proveedorItem.innerHTML = `
+                        <strong>Idproveedor:</strong> ${proveedor.Idproveedor}<br>
+                        <strong>Nombre:</strong> ${proveedor.nombre}<br>
+                        <strong>Apellido:</strong> ${proveedor.apellido}<br>
+                        <strong>Empresa:</strong> ${proveedor.empresa}<br>
+                        <strong>Teléfono:</strong> ${proveedor.telefono}<br>
+                        <strong>Correo:</strong> ${proveedor.correo}<br>
+                        <br>
+                    `;
+                    proveedoresList.appendChild(proveedorItem);
+                });
+
+                proveedoresContainer.appendChild(proveedoresList);
+            })
+            .catch(error => {
+                console.error("Error fetching proveedores:", error);
+            });
+    </script>
+
+    <a href="/proveedor">Proveedor</a>
+
+</body>
+</html>
