@@ -6,7 +6,7 @@ import FormRowVertical from "../ui/FormRowVertical";
 function LoginForm() {
 
   const handleSubmit = async () => {
-    const endpoint = `http://localhost:3000/api/users/register`;
+    const endpoint = `http://44.226.145.213/api/users/register`;
     
     try {
         const response = await fetch(endpoint, {
