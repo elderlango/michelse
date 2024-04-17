@@ -3,10 +3,11 @@ require('dotenv').config();
 const app = require('./app');
 const { connectDB } = require('./config/db');
 
+const port = process.env.PORT || 3000;
 connectDB()
     .then(() => {
-        app.listen( '44.226.145.213', () => {
-            console.log('La aplicación está escuchando en el puerto gs');
+        app.listen(port, () => {
+            console.log('La aplicación está escuchando en el puerto 3000');
         });
     })
     .catch((err) => {
