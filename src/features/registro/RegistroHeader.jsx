@@ -40,7 +40,7 @@ function HeaderMenu() {
     <StyledHeaderMenu>
       {/* <Logo /> */}
       <li>
-        <Button onClick={() => navigate("/Login")}>Iniciar sesion</Button>
+        <Button onClick={() => navigate("/")}>Iniciar sesion</Button>
       </li> 
       <li>
         <DarkModeToggle />
