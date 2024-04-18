@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="css/productos.css">
+</head>
+<body>
+
+    <h1>Productos</h1>
+
+    <div id="productos-container"></div> <!-- Container to display the list of productos -->
+
+    <script>
+        // Fetch data from the "/productosGet" endpoint
+        fetch("/productosGet")
+            .then(response => response.json())
+            .then(productos => {
+                // Create HTML elements to display the productos
+                const productosContainer = document.getElementById("productos-container");
+                const productosList = document.createElement("ul");
+
+                productos.forEach(producto => {
+                    const productoItem = document.createElement("li");
+                    productoItem.innerHTML = `
+                        <strong>Código:</strong> ${producto.codigo}<br>
+                        <strong>Nombre:</strong> ${producto.nombre}<br>
+                        <strong>Descripción:</strong> ${producto.descripcion}<br>
+                        <strong>Fecha de Creación:</strong> ${producto.fecha_creacion}<br>
+                        <strong>Estatus:</strong> ${producto.estatus}<br>
+                        <strong>Proveedor:</strong> ${producto.Proveedor}<br>
+                        <br>
+                    `;
+                    productosList.appendChild(productoItem);
+                });
+
+                productosContainer.appendChild(productosList);
+            })
+            .catch(error => {
+                console.error("Error fetching productos:", error);
+            });
+    </script>
+
+    <a href="/productos">Productos</a>
+
+</body>
+</html>
