@@ -30,7 +30,7 @@ const RegistroForm = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const endpoint = `http://localhost:3000/api/users/register`; 
+    const endpoint = `http://44.226.145.213:10000/api/users/register`; 
     
     try {
         const response = await fetch(endpoint, {
