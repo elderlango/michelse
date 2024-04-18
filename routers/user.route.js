@@ -1,19 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const {
-  signUpUser,
+  RegisterUser,
   LoginUser,
   LoginOutUser,
-} = require('../controller/user.controller');
+  GetUser,
+} = require('../controller/auth.controller');
 //const { protectUser } = require('../middleware/authMiddleware'); // Middleware de autenticación para usuarios
 
 // Registro de usuario
-router.post('/register', signUpUser);
+router.post('/register', RegisterUser);
 
 // Inicio de sesión de usuario
 router.post('/login', LoginUser);
 
 router.post('/logout', LoginOutUser);
+
+router.get('/getUser', GetUser);
 
 /*
 // Las siguientes rutas requieren que el usuario esté autenticado

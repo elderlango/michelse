@@ -1,9 +1,8 @@
-const User = require('../models/user.model.js');
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Login = require('../models/login.model.js');
 
-const signUpUser = async (req, res) => {
+const RegisterUser = async (req, res) => {
   try {
     const { name, password } = req.body;
     //console.log("req body:", req.body);
@@ -14,9 +13,8 @@ const signUpUser = async (req, res) => {
       password: passwordHash,
     });
     const savedUser = await newUser.save();
-    res.status(201).render("login", {
-      naming: req.body.name,
-    });
+
+    res.status(200).json(savedUser); // Enviar la lista de proveedores como respuesta
   } catch (error) {
     res.send("incorrectos inputs");
     console.log("Error:", error);
@@ -26,7 +24,7 @@ const signUpUser = async (req, res) => {
 const LoginUser =  async (req, res) => {
   try {
     //console.log("req body:", req.body);
-    const check = await User.findOne({ name: req.body.name });
+    const check = await Login.findOne({ name: req.body.name });
     //console.log(check);
     //console.log("Stored hashed password:", check.password);
     const passwordMatch = await bcryptjs.compare(req.body.password, check.password);
@@ -34,7 +32,8 @@ const LoginUser =  async (req, res) => {
     if (passwordMatch) {
         const token = await createToken(check);
         res.cookie("token", token, { maxAge: 86400000, httpOnly: true }); 
-        res.status(201).render("home", { name: `${req.body.name}`, naming: `${req.body.name}` }); 
+        res.send("sesion iniciada");
+        console.log("sesion iniciada:", req.body.name );
         //res.status(201).render("home", { name: `${req.body.name}`, naming: `${req.body.password}+${req.body.name}` }); 
     } else {
       res.send("contrasena incorrecta");
@@ -57,7 +56,7 @@ const LoginUser =  async (req, res) => {
 const LoginOutUser =  async (req, res) => {
     try {
       const name = req.body.name; // Retrieve the user's name from the request body
-      const check = await User.findOne({ name: name});
+      const check = await Login.findOne({ name: name});
           check.token = null; // Set the token to null
       await check.save();
       res.cookie('token',"",{
@@ -90,12 +89,20 @@ function createToken(check) {
     });
   }
   
-
-
+  const GetUser = async (req, res) => {
+    try {
+      // Consultar todos los proveedores en la base de datos
+      const usuarios = await Login.find({ estatus: true });
+      res.status(200).json(usuarios); // Enviar la lista de proveedores como respuesta
+    } catch (error) {
+      res.status(500).json({ message: "Error al obtener los proveedores" });
+    }
+  };
 
 module.exports = {
-  signUpUser,
+  RegisterUser,
   LoginUser,
   LoginOutUser,
+  GetUser,
 };
 
