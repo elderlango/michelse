@@ -9,11 +9,11 @@ import { DarkModeProvider } from "./context/DarkModeContext";
 import Login from "./pages/Login";
 import Registro from "./pages/Registro";
 import Productos from "./pages/Productos";
+import Home from "./pages/Home";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      // staleTime: 60 * 1000,
       staleTime: 0,
     },
   },
@@ -29,6 +29,8 @@ function App() {
           <Routes>
           <Route path="Productos" element={<Productos />} />
             <Route path="Registro" element={<Registro />} />
+            <Route path="Home" element={<Home/>} />
+
             <Route path="*" element={<Login />} />
             {/* <Route path="*" element={<Home/>} /> */}
           </Routes>

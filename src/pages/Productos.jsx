@@ -10,7 +10,7 @@ function LoginForm() {
     //const endpoint = `http://44.226.145.213/api/users/register`;
 
     try {
-        const response = await fetch(endpoint, {
+         await fetch(endpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

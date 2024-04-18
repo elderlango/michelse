@@ -5,7 +5,7 @@ import Input from "../../ui/Input";
 import FormRowVertical from "../../ui/FormRowVertical";
 import Heading from "../../ui/Heading";
 
-const RegistroForm = () => {
+const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisibility, setPasswordVisibility] = useState(true);
@@ -14,22 +14,7 @@ const RegistroForm = () => {
     setPasswordVisibility(!passwordVisibility);
   };
 
-  /*useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/api/users/getUser');
-        const data = await response.json();
-        console.log(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, []);*/
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const handleLogin = async () => {
     const endpoint = `http://localhost:3000/api/users/register`; 
     
     try {
@@ -43,9 +28,6 @@ const RegistroForm = () => {
                 password: password,
             }),
         });
-
-        setEmail("");
-        setPassword("");
 
         if (response.ok && response.headers.get('Content-Type')?.includes('application/json')) {
             const json = await response.json();
@@ -61,40 +43,36 @@ const RegistroForm = () => {
 };
 
   return (
-    <Form onSubmit={handleLogin}>
-      <Heading as="h1">Registro</Heading>
-    <FormRowVertical label="Correo electrónico">
+    <div>
+      <div>
+        <label>Email</label>
         <Input
-         value={email}
-         onChange={(e) => setEmail(e.target.value)}
-         placeholder="Email"
-         autoComplete="off"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          autoComplete="off"
         />
-      </FormRowVertical>
+      </div>
 
-      <FormRowVertical label="Contraseña">
+      <div>
+        <label>Password</label>
         <Input
-         type={passwordVisibility ? 'password' : 'text'}
-         value={password}
-         onChange={(e) => setPassword(e.target.value)}
-         placeholder="Password"
-         autoComplete="off"
+          type={passwordVisibility ? 'password' : 'text'}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          autoComplete="off"
         />
-        
-      </FormRowVertical>
-      <Button onClick={togglePasswordVisibility}>
+        <button onClick={togglePasswordVisibility}>
           {passwordVisibility ? 'Hide' : 'Show'}
-        </Button>
+        </button>
+      </div>
 
-      <FormRowVertical>
-
-      <Button onClick={handleLogin} >
-        Registro
-      </Button>
-      </FormRowVertical>
-
-      </Form>
+      <button onClick={handleLogin}>
+        Login
+      </button>
+    </div>
   );
 };
 
-export default RegistroForm;
+export default LoginScreen;
