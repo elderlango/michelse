@@ -17,7 +17,7 @@ router.post('/login', LoginUser);
 router.post('/logout', LoginOutUser);
 
 router.get('/getUser', GetUser);
-
+//
 /*
 // Las siguientes rutas requieren que el usuario esté autenticado
 router.post('/acceptMonitoringRequest/:adminId', protectUser, acceptMonitoringRequest);
